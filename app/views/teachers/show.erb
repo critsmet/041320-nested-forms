@@ -1,0 +1,10 @@
+<%= @teacher.name %>
+<br>
+
+<%= @teacher.subject %>
+
+<br>
+
+<% @teacher.students.each do |student| %>
+  <%= student.name %>
+<% end %>

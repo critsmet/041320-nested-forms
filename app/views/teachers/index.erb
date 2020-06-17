@@ -1,0 +1,11 @@
+<% if @student %>
+  <h2><%= @student.name %>'s Teachers</h2>
+<% else %>
+  <h2>All Teachers</h2>
+<% end %>
+<br>
+<br>
+<% @teachers.each do |teacher| %>
+  <%= teacher.name %>
+  <br>
+<% end %>

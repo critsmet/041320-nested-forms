@@ -1,0 +1,20 @@
+<h2><%= @student.name %></h2>
+
+<% if flash[:message] %>
+  <%= flash[:message] %>
+<% end %>
+
+Age: <%= @student.age %>
+<br>
+Grade: <%= @student.grade %>
+<br>
+Teachers:
+<ul>
+  <% @student.teachers.each do |teacher| %>
+    <li>
+      <%= teacher.info %>
+    </li>
+  <% end %>
+</ul>
+<br>
+<%= link_to "Students Index", students_path %>

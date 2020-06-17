@@ -1,0 +1,33 @@
+<%= form_with model: @student, local: true do |f| %>
+  <% if @student.errors.any? %>
+    <% @student.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :age %>
+  <%= f.number_field :age, in: 5..18  %>
+  <%= f.label :grade %>
+  <%= f.number_field :grade , in: 1..12 %>
+  <br>
+  <br>
+  <%= f.label :teachers %>
+  <br>
+  <br>
+  <%= f.collection_check_boxes :teacher_ids, Teacher.all, :id, :info %>
+  <br>
+  <br>
+  <%= f.label "Or make your own:" %>
+  <br>
+  <%= f.fields_for :teachers, @student.teachers do |tf| %>
+    <%= tf.label :name %>
+    <%= tf.text_field :name %>
+    <br>
+    <%= tf.label :subject %>
+    <%= tf.text_field :subject %>
+    <br>
+    <br>
+    <% end %>
+  <%= f.submit %>
+<% end %>
